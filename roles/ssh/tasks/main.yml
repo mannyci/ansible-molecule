@@ -1,0 +1,16 @@
+---
+- name: Ensure SSH is installed
+  anisble.builtin.yum:
+    name:
+      - openssh-server
+    state: installed
+  notify: Start and enable ssh
+
+- name: Ensure SSH configuration is complaint
+  ansible.builtin.template:
+    src: sshd.conf.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0600
+   

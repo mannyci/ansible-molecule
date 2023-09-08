@@ -1,0 +1,7 @@
+---
+- name: Ensure Nginx is installed
+  anisble.builtin.yum:
+    name:
+      - nginx
+    state: installed
+  notify: Start and enable nginx
