@@ -1,6 +1,6 @@
 ---
 - name: Ensure SSH is installed
-  anisble.builtin.yum:
+  ansible.builtin.yum:
     name:
       - openssh-server
     state: installed
