@@ -4,7 +4,7 @@ on:
   - push
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,3 +18,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Yamllint
         run: yamllint .
+      - name: Molecule converge
+        run: molecule converge
+      - name: Molecule verify
+        run: cd roles/ssh && molecule verify
+    

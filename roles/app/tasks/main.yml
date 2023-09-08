@@ -1,6 +1,6 @@
 ---
 - name: Ensure Nginx is installed
-  anisble.builtin.yum:
+  ansible.builtin.yum:
     name:
       - nginx
     state: installed

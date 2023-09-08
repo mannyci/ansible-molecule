@@ -9,8 +9,21 @@ rules:
     max-spaces-inside: 1
     level: error
   line-length: disable
-  truthy: disable
+  colons:
+    max-spaces-before: 0
+    max-spaces-after: -1
+  indentation:
+    level: error
+    indent-sequences: true
+  truthy:
+    level: error
+    # Allow only YAML 1.2 booleans
+    allowed-values:
+      - 'true'
+      - 'false'
+      - 'on'
 
 ignore: |
   .tox/
   .cache/
+  changelogs
