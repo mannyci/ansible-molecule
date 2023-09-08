@@ -4,7 +4,7 @@
     name:
       - openssh-server
     state: installed
-  notify: Start and enable ssh
+  notify: Start and enable sshd
 
 - name: Ensure SSH configuration is complaint
   ansible.builtin.template:
