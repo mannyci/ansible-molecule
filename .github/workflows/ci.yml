@@ -34,4 +34,3 @@ jobs:
         run: cd ./roles/ssh && molecule converge
       - name: Molecule verify
         run: cd ./roles/ssh && molecule verify
-
