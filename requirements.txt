@@ -1,4 +1,4 @@
-ansible==8.3.0
+ansible
 ansible-builder==3.0.0
 ansible-core==2.15.3
 molecule==6.0.2
