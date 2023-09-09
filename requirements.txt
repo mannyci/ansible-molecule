@@ -1,8 +1,8 @@
 ansible
-ansible-builder==3.0.0
-ansible-core==2.15.3
-molecule==6.0.2
-molecule-plugins==23.5.0
-pytest-testinfra==9.0.0
+ansible-builder
+ansible-core
+molecule
+molecule-plugins
+pytest-testinfra
 docker
 yamllint
