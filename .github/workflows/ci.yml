@@ -45,6 +45,6 @@ jobs:
           cache: 'pip'
           cache-dependency-path: '**/requirements*.txt'
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install --upgrade ansible-core ansible-builder ansible-navigator
       - name: Build EE
         run: ansible-builder build -t custom
