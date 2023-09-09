@@ -19,6 +19,8 @@ jobs:
       - name: Yamllint
         run: yamllint .
   molecule:
+    needs:
+      - lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,6 +37,8 @@ jobs:
       - name: Molecule verify
         run: cd ./roles/ssh && molecule verify
   build-ee:
+    needs:
+      - molecule
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
