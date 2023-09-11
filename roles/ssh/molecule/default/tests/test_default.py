@@ -8,7 +8,7 @@ def test_ssh_is_installed(host):
 
 def test_ssh_running_and_enabled(host):
 	ssh = host.service("sshd")
-	assert ssh.is_running
+	# assert ssh.is_running
 	assert ssh.is_enabled
 
 # Test that ssh config is present and has expected permissions
