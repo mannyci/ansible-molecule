@@ -9,10 +9,10 @@ def test_ssh_is_installed(host):
 # Leave services for idempotency during actual run
 # Can be tested if needed
 
-# def test_ssh_running_and_enabled(host):
-# 	ssh = host.service("sshd")
-# 	assert ssh.is_running
-# 	assert ssh.is_enabled
+def test_ssh_running_and_enabled(host):
+	ssh = host.service("sshd")
+	assert ssh.is_running
+	assert ssh.is_enabled
 
 # Test that ssh config is present and has expected permissions
 @pytest.mark.parametrize("filename,owner,group,mode", [
