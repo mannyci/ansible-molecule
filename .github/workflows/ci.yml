@@ -32,10 +32,10 @@ jobs:
           cache-dependency-path: '**/requirements*.txt'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Molecule converge
-        run: cd ./roles/ssh && molecule converge
-      - name: Molecule verify
-        run: cd ./roles/ssh && molecule verify
+      - name: Molecule converge SSH
+        run: cd ./roles/ssh && molecule test
+      - name: Molecule converge APP
+        run: cd ./roles/app && molecule test
   build-ee:
     needs:
       - molecule
