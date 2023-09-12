@@ -4,4 +4,4 @@
   tasks:
     - name: Include SSH role
       ansible.builtin.include_role:
-        name: ssh
+        name: app
