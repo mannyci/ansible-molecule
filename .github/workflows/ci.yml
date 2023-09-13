@@ -1,11 +1,7 @@
 ---
 name: CI for ansible test
 on:
-  push:
-    paths:
-      - 'roles/ssh/**'
-      - 'roles/app/**'
-      - '.github/workflows/ci.yml'
+  - push
 
 jobs:
   lint:
@@ -30,7 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "enterpriselinux"
+          - distro: "centos-8"
             tag: "latest"
     steps:
       - uses: actions/checkout@v4
