@@ -49,6 +49,8 @@ jobs:
         with:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}
+        env:
+          ANSIBLE_ROLES_PATH: roles/app
   build-ee:
     needs:
       - molecule
