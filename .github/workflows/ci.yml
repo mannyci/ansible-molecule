@@ -25,26 +25,30 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scenario:
+        distro:
           - centos-8
           - ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
-        id: checkout
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       - name: Molecule app role
-        uses: gofrolist/molecule-action@v2
+        run: cd roles/app && molecule test
         if: always()
-        with:
-          molecule_working_dir: roles/app
         env:
+          PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
       - name: Molecule ssh role
-        uses: gofrolist/molecule-action@v2
+        run: cd roles/ssh && molecule test
         if: always()
-        with:
-          molecule_working_dir: roles/ssh
         env:
+          PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+
   build-ee:
     needs:
       - molecule
