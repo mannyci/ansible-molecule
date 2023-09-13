@@ -27,7 +27,6 @@ jobs:
       matrix:
         distro:
           - centos-8
-          - ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
