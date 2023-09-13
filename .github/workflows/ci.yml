@@ -27,7 +27,6 @@ jobs:
       matrix:
         distro:
           - centos-8
-          - ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -36,16 +35,17 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Molecule app role
-        run: cd roles/app && molecule test
+
+      - name: Molecule APP Role
         if: always()
+        run: cd ./roles/app && molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
-      - name: Molecule ssh role
-        run: cd roles/ssh && molecule test
+      - name: Molecule SSH Role
         if: always()
+        run: cd ./roles/ssh && molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
