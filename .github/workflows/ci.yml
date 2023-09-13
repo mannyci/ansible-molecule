@@ -33,8 +33,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Molecule APP Role
+        if: always()
         run: cd ./roles/app && molecule test
       - name: Molecule SSH Role
+        if: always()
         run: cd ./roles/ssh && molecule test
   build-ee:
     needs:
