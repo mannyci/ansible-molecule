@@ -2,10 +2,10 @@
 name: CI for ansible test
 on:
   push:
-  paths:
-    - 'roles/ssh/**'
-    - 'roles/app/**'
-    - '.github/workflows/ci.yml'
+    paths:
+      - 'roles/ssh/**'
+      - 'roles/app/**'
+      - '.github/workflows/ci.yml'
 
 jobs:
   lint:
