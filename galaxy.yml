@@ -1,11 +1,11 @@
 ---
-namespace: test
-name: bla
+namespace: iac
+name: molecule
 version: 1.0.0
 readme: README.md
 authors:
-  - your name <example@domain.com>
+  - Manas Maiti <mmaiti@redhat.com>
 
-description: your collection description
+description: An example collection to test Ansible with Molecule
 license:
   - GPL-2.0-or-later

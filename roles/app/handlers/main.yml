@@ -3,3 +3,6 @@
   ansible.builtin.systemd:
     name: nginx
     state: started
+    enabled: true
+    # state: started
+    
