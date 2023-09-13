@@ -34,6 +34,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       - name: Molecule app role
         run: cd roles/app && molecule test
         if: always()
