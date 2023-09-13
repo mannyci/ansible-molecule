@@ -22,20 +22,41 @@ jobs:
     needs:
       - lint
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - centos-8
+          - ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
+        id: checkout
+      # - name: Set up Python
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: '3.10'
+      #     cache: 'pip'
+      #     cache-dependency-path: '**/requirements*.txt'
+      # - name: Install dependencies
+      #   run: pip install -r requirements.txt
+      # - name: Molecule test SSH
+      #   run: cd ./roles/ssh && molecule test
+      # - name: Molecule test APP
+      #   run: cd ./roles/app && molecule test
+      - name: Molecule app role
+        uses: gofrolist/molecule-action@v2
+        if: always()
         with:
-          python-version: '3.10'
-          cache: 'pip'
-          cache-dependency-path: '**/requirements*.txt'
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Molecule test SSH
-        run: cd ./roles/ssh && molecule test
-      - name: Molecule test APP
-        run: cd ./roles/app && molecule test
+          molecule_working_dir: roles/app
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+      - name: Molecule ssh role
+        uses: gofrolist/molecule-action@v2
+        if: always()
+        with:
+          molecule_working_dir: roles/ssh
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
   build-ee:
     needs:
       - molecule
