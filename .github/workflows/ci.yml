@@ -25,9 +25,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scenario:
-          - centos-8
-          - ubuntu-20.04
+        config:
+          - image: "enterpriselinux"
+            tag: "latest"
     steps:
       - uses: actions/checkout@v4
         id: checkout
@@ -43,20 +43,11 @@ jobs:
       #   run: cd ./roles/ssh && molecule test
       # - name: Molecule test APP
       #   run: cd ./roles/app && molecule test
-      - name: Molecule app role
-        uses: gofrolist/molecule-action@v2
-        if: always()
+      - name: Molecule
+        uses: robertdebock/molecule-action@5.0.2
         with:
-          molecule_working_dir: roles/app
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-      - name: Molecule ssh role
-        uses: gofrolist/molecule-action@v2
-        if: always()
-        with:
-          molecule_working_dir: roles/ssh
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
+          image: ${{ matrix.config.image }}
+          tag: ${{ matrix.config.tag }}
   build-ee:
     needs:
       - molecule
