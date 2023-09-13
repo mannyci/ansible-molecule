@@ -9,7 +9,7 @@ lint: |
   ansible-lint
 platforms:
   - name: instance
-    image: ${MOLECULE_DISTRO:-ubuntu-xenial}
+    image: quay.io/centos/centos:stream8
     command: /sbin/init
     tmpfs:
       - /run

@@ -22,12 +22,7 @@ jobs:
     needs:
       - lint
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - distro: "centos-8"
-            tag: "latest"
+
     steps:
       - uses: actions/checkout@v4
         with:
