@@ -67,3 +67,4 @@ jobs:
         run: pip install --upgrade ansible-core ansible-builder ansible-navigator
       - name: Build EE
         run: ansible-builder build -t custom
+
