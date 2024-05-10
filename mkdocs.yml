@@ -2,3 +2,16 @@ site_name: Docs
 # site_url: https://mydomain.org/mysite
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+nav:
+  - Home:
+    - index.md
+  - General guidelines:
+    - general/index.md
+  - Ansible guidelines:
+    - ansible/index.md
+
